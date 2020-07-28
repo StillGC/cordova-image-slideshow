@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="org.km.plugins.image_slideshow"
+      version="1.0.0">
+    <name>Image_Slideshow</name>
+     <js-module src="www/image_slideshow.js" name="Image_Slideshow">
+    <clobbers target="image_slideshow" />
+  </js-module>
+
+<!-- Android -->
+    <platform name="android">
+<!--    <hook type="after_plugin_add" src="scripts/android-install.js" />-->
+<!--    <hook type="after_plugin_install" src="scripts/android-install.js" />-->
+<!--    <hook type="before_plugin_rm" src="scripts/android-install.js" />-->
+<!--    <hook type="before_plugin_uninstall" src="scripts/android-install.js" />-->
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Image_Slideshow" >
+                <param name="android-package" value="org.km.plugins.image_slideshow.ImagePlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="org.km.plugins.image_slideshow.ImageShowActivity" />
+        </config-file>
+        
+        <source-file src="src/android/ImagePlugin.java" target-dir="src/org/km/plugins/image_slideshow" />
+        <source-file src="src/android/SampleAdapter.java" target-dir="src/org/km/plugins/image_slideshow" />
+        <source-file src="src/android/HackyViewPager.java" target-dir="src/org/km/plugins/image_slideshow" />
+        <source-file src="src/android/ImageShowActivity.java" target-dir="src/org/km/plugins/image_slideshow" />
+        <source-file src="layout/image_show_activity.xml" target-dir="res/layout" />
+        <source-file src="libs/photoview-library-1.2.2.jar" target-dir="libs" />
+        <framework src="com.android.support:appcompat-v7:23.2.1"></framework>
+        <framework src="com.github.bumptech.glide:glide:3.6.1"></framework>
+        	<info>
+              SUCCESS(多图浏览插件添加成功)
+          </info>
+    </platform>
+    
+<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="Image_Slideshow">
+                <param name="ios-package" value="Image_Slideshow" />
+            </feature>
+		</config-file>
+        <source-file src="src/ios/Image_Slideshow.m" />
+        <source-file src="src/ios/PhotoBrowerViewController.m" />
+        <header-file src="src/ios/Image_Slideshow.h" />
+        <header-file src="src/ios/PhotoBrowerViewController.h" />
+	</platform>
+	
+
+
+</plugin>
