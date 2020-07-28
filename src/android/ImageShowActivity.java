@@ -31,8 +31,8 @@ public class ImageShowActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.image_show_activity);
-
+        //setContentView(R.layout.image_show_activity);
+        setContentView(getApplication().getResources().getIdentifier("image_show_activity", "layout", getApplication().getPackageName()));
         init();
         showImage(listUrl,imageNum,type);
 
