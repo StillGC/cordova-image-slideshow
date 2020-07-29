@@ -35,7 +35,6 @@ public class ImageShowActivity extends Activity {
         setContentView(getApplication().getResources().getIdentifier("image_show_activity", "layout", getApplication().getPackageName()));
         init();
         showImage(listUrl,imageNum,type);
-
     }
 
     private void init(){
@@ -55,8 +54,11 @@ public class ImageShowActivity extends Activity {
     }
 
     private void showImage(List<String> listUrl,int imageNum,String type) {
+        //ProgressBar
+        ProgressBar loadingBar = (ProgressBar) findViewById(getApplication().getResources().getIdentifier("loadingBar", "id", getApplication().getPackageName()));
+        //View
         viewPager = new HackyViewPager(this);
-        viewPager.setAdapter(new SampleAdapter(this, listUrl,type));
+        viewPager.setAdapter(new SampleAdapter(this, listUrl, type, loadingBar));
         viewPager.setCurrentItem(imageNum-1);
         try {
             this.runOnUiThread(
@@ -67,32 +69,13 @@ public class ImageShowActivity extends Activity {
                             int backGroundColor = Color.parseColor("#000000");
                             viewPager.setBackgroundColor(backGroundColor);
                             addContentView(viewPager, layoutParams);
-
-
                         }
                     }
-
             );
         } catch (Exception e) {
             Log.e("Exception", e.toString());
             e.printStackTrace();
         }
     }
-
-    // @Override
-    // public boolean onKeyDown(int keyCode, KeyEvent event) {
-    //     if (keyCode == KeyEvent.KEYCODE_BACK){
-    //         Log.e("onKeyDown","KEYCODE_BACK");
-    //         isOpen=false;
-    //         Intent mIntent = new Intent();
-    //         mIntent.putExtra("isOpen", isOpen);
-    //         // 设置结果，并进行传送
-    //         setResult(1, mIntent);
-    //         this.finish();
-    //         return false;
-    //     }
-    //     return super.onKeyDown(keyCode, event);
-    // }
-
 
 }
