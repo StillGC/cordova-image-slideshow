@@ -89,6 +89,7 @@ public class ImageShowActivity extends Activity {
             // 设置结果，并进行传送
             setResult(1, mIntent);
             this.finish();
+            moveTaskToBack(true);
             return false;
         }
         return super.onKeyDown(keyCode, event);
