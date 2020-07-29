@@ -11,8 +11,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-
-//import _PACKAGE_NAME_;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,7 @@ public class ImageShowActivity extends Activity {
     ArrayList listUrl;
     String type;
     boolean isOpen;
+    ProgressBar loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class ImageShowActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //setContentView(R.layout.image_show_activity);
         setContentView(getApplication().getResources().getIdentifier("image_show_activity", "layout", getApplication().getPackageName()));
+        //ProgressBar
+        loadingBar = (ProgressBar) findViewById(getApplication().getResources().getIdentifier("loadingBar", "id", getApplication().getPackageName()));
         init();
         showImage(listUrl,imageNum,type);
     }
@@ -54,9 +56,6 @@ public class ImageShowActivity extends Activity {
     }
 
     private void showImage(List<String> listUrl,int imageNum,String type) {
-        //ProgressBar
-        ProgressBar loadingBar = (ProgressBar) findViewById(getApplication().getResources().getIdentifier("loadingBar", "id", getApplication().getPackageName()));
-        //View
         viewPager = new HackyViewPager(this);
         viewPager.setAdapter(new SampleAdapter(this, listUrl, type, loadingBar));
         viewPager.setCurrentItem(imageNum-1);
