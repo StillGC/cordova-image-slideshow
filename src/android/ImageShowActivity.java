@@ -87,9 +87,8 @@ public class ImageShowActivity extends Activity {
             Intent mIntent = new Intent();
             mIntent.putExtra("isOpen", isOpen);
             // 设置结果，并进行传送
-            setResult(1, mIntent);
             this.finish();
-            moveTaskToBack(true);
+            setResult(1, mIntent);
             return false;
         }
         return super.onKeyDown(keyCode, event);
