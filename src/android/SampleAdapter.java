@@ -65,12 +65,12 @@ public class SampleAdapter extends PagerAdapter {
             }
             Glide.with(activity).load(baseList.get(position)).listener(new RequestListener<Object, GlideDrawable>() {
                     @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    public boolean onException(Exception e, Object model, Target<GlideDrawable> target, boolean isFirstResource) {
                         return false;
                     }
 
                     @Override
-                    public boolean onResourceReady(GlideDrawable resource, Any model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    public boolean onResourceReady(GlideDrawable resource, Object model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         loadingBar.setVisibility(View.INVISIBLE);
                         return false;
                     }
@@ -78,12 +78,12 @@ public class SampleAdapter extends PagerAdapter {
         }else {
             Glide.with(activity).load(listUrl.get(position)).listener(new RequestListener<Object, GlideDrawable>() {
                     @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    public boolean onException(Exception e, Object model, Target<GlideDrawable> target, boolean isFirstResource) {
                         return false;
                     }
 
                     @Override
-                    public boolean onResourceReady(GlideDrawable resource, Any model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    public boolean onResourceReady(GlideDrawable resource, Object model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         loadingBar.setVisibility(View.INVISIBLE);
                         return false;
                     }
