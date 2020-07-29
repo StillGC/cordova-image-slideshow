@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class SampleAdapter extends PagerAdapter {
                 byte[] bytes=baseToByte(listUrl.get(i));
                 baseList.add(bytes);
             }
-            Glide.with(activity).load(baseList.get(position)).listener(new RequestListener<String, GlideDrawable>() {
+            Glide.with(activity).load(baseList.get(position)).listener(new RequestListener<byte[], GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
                         return false;
