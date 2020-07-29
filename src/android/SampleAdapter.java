@@ -63,33 +63,31 @@ public class SampleAdapter extends PagerAdapter {
                 byte[] bytes=baseToByte(listUrl.get(i));
                 baseList.add(bytes);
             }
-            Glide.with(activity).load(baseList.get(position)).into(photoView , new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        loadingBar.setVisibility(View.INVISIBLE);
-                                    }
+            Glide.with(activity).load(baseList.get(position)).listener(new RequestListener<GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        return false;
+                    }
 
-                                    @Override
-                                    public void onError(Exception e) {
-                                        Toast.makeText(getActivity(), "Error loading image.", Toast.LENGTH_LONG).show();
-
-                                        finish();
-                                    }
-                                });
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, Any model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        loadingBar.setVisibility(View.INVISIBLE);
+                        return false;
+                    }
+                }).into(photoView);
         }else {
-            Glide.with(activity).load(listUrl.get(position)).into(photoView, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        loadingBar.setVisibility(View.INVISIBLE);
-                                    }
+            Glide.with(activity).load(listUrl.get(position)).listener(new RequestListener<GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        return false;
+                    }
 
-                                    @Override
-                                    public void onError(Exception e) {
-                                        Toast.makeText(getActivity(), "Error loading image.", Toast.LENGTH_LONG).show();
-
-                                        finish();
-                                    }
-                                });
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, Any model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        loadingBar.setVisibility(View.INVISIBLE);
+                        return false;
+                    }
+                }).into(photoView);
         }
 
         photoView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
