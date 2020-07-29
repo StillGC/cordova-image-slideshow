@@ -79,20 +79,20 @@ public class ImageShowActivity extends Activity {
         }
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            Log.e("onKeyDown","KEYCODE_BACK");
-            isOpen=false;
-            Intent mIntent = new Intent();
-            mIntent.putExtra("isOpen", isOpen);
-            // 设置结果，并进行传送
-            setResult(1, mIntent);
-            this.finish();
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+    // @Override
+    // public boolean onKeyDown(int keyCode, KeyEvent event) {
+    //     if (keyCode == KeyEvent.KEYCODE_BACK){
+    //         Log.e("onKeyDown","KEYCODE_BACK");
+    //         isOpen=false;
+    //         Intent mIntent = new Intent();
+    //         mIntent.putExtra("isOpen", isOpen);
+    //         // 设置结果，并进行传送
+    //         setResult(1, mIntent);
+    //         this.finish();
+    //         return false;
+    //     }
+    //     return super.onKeyDown(keyCode, event);
+    // }
 
 
 }
